@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  labels:
+    app: dnscache
+spec:
+  selector:
+    matchLabels:
+      app: dnscache
+  template:
+    metadata:
+      labels:
+        app: dnscache
+    spec:
+      containers:
+      - name: app
+        image: vikasit/flask
+        volumeMounts:
+        - name: config-vol
+          mountPath: /config
+      volumes:
+      - name: config-vol
+        configMap:
+          name: dnscache-config
+

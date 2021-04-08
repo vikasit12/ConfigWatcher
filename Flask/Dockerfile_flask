@@ -1,0 +1,6 @@
+FROM python:latest
+RUN pip install flask
+COPY flask-app.py /flask-app.py
+EXPOSE 80
+ENTRYPOINT [ "python", "/flask-app.py" ]
+
