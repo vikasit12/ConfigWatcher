@@ -52,7 +52,7 @@ def getPodLabels(configmap):
     response = r.json()
     # Extract the podSelector part from each object in the response
     pod_labels_json = [i['spec']['podSelector']
-                       for i in response['items'] if i['spec']['configMap'] == "dnscache-config"]
+                       for i in response['items'] if i['spec']['configMap'] == configmap]
     result = [list(l.keys())[0] + "=" + l[list(l.keys())[0]]
               for l in pod_labels_json]
     # The result is a list of labels
