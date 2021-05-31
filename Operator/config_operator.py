@@ -70,6 +70,7 @@ def event_loop():
     for line in r.iter_lines():
         obj = json.loads(line)
         # We examine the type part of the object to see if it is MODIFIED
+        log.info(dir(obj))
         event_type = obj['type']
         # and we extract the configmap name because we'll need it later
         configmap_name = obj["object"]["metadata"]["name"]
